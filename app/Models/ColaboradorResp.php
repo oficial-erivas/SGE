@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Emprestimo extends Model
+class ColaboradorResp extends Model
 {
     use HasFactory;
 
-    public function equipamento()
+    public function emprestimos()
     {
-        return $this->belongsTo(Equipamento::class);
-    } 
+        return $this->hasMany(Emprestimo::class);
+    }
 }

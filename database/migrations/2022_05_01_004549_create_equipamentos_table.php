@@ -16,13 +16,15 @@ class CreateEquipamentosTable extends Migration
         Schema::create('equipamentos', function (Blueprint $table) {
             $table->id();
             $table->integer('equi_num_pat');
+            //$table->primary(['equi_num_pat']);
             $table->string('equi_empresa_assoc');
             $table->string('equi_setor_origem');
             $table->string('equi_setor_aloc');
             $table->date('equi_data_aquisicao');            
             $table->float('equi_valor_do_bem');
             $table->string('equi_descricao');            
-            $table->string('equi_nome');      
+            $table->string('equi_nome');
+            $table->enum('status', ['disponivel', 'indisponivel']);     
             $table->timestamps();
         });
     }

@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class Tecnico extends Model
 {
     use HasFactory;
 
-/*     public function emprestimos()
+    public function emprestimos()
     {
         return $this->hasMany(Emprestimo::class);
     }
-
-    public function reservas()
-    {
-        return $this->hasMany(Reserva::class);
-    } */
 }

@@ -9,7 +9,7 @@ class Reserva extends Model
 {
     use HasFactory;
 
-/*     public function usuario()
+     public function usuario()
     {
         return $this->belongsTo(Usuario::class);
     }
@@ -17,5 +17,5 @@ class Reserva extends Model
     public function equipamento()
     {
         return $this->belongsTo(Equipamento::class);
-    } */
+    } 
 }

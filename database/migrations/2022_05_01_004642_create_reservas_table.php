@@ -18,8 +18,13 @@ class CreateReservasTable extends Migration
             $table->date('res_data_emprestimo');
             $table->date('res_data_devolucao');
             $table->string('res_descricao'); 
-            $table->unsignedInteger('usuario_id')->index();
-            $table->unsignedInteger('equipamento_id')->index();
+
+            $table->unsignedBigInteger('colab_id')->index();
+            $table->foreign('colab_id')->references('id')->on('colaboradors');
+
+            $table->unsignedBigInteger('equi_id')->index();
+            $table->foreign('equi_id')->references('id')->on('equipamentos');
+
             $table->timestamps();
         });
     }

@@ -18,4 +18,6 @@ class Equipamento extends Model
     {
         return $this->hasMany(Reserva::class);
     } */
+
+    protected $fillable = ['id','equi_num_pat','equi_empresa_assoc','equi_setor_origem','equi_setor_aloc','equi_data_aquisicao','equi_valor_do_bem','equi_descricao','equi_nome','status'];
 }

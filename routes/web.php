@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+Route::get('/colaborador', function () {
+    return view('perfis.colaborador');
+});
+
+Route::get('/equipamentos/novo','App\Http\Controllers\EquipamentosController@create');
+Route::post('/equipamentos/novo','App\Http\Controllers\EquipamentosController@store')->name('registrar_equipamento');
+Route::get('/equipamentos/ver/{id}','App\Http\Controllers\EquipamentosController@show');
+Route::get('/equipamentos/editar/{id}','App\Http\Controllers\EquipamentosController@edit');
+Route::post('/equipamentos/editar/{id}','App\Http\Controllers\EquipamentosController@update')->name('alterar_equipamento');
+Route::get('/equipamentos/excluir/{id}','App\Http\Controllers\EquipamentosController@delete');
+Route::post('/equipamentos/excluir/{id}','App\Http\Controllers\EquipamentosController@destroy')->name('excluir_equipamento');

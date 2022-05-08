@@ -10,46 +10,46 @@
   <meta name="author" content="" />
   <link rel="stylesheet" href=
 "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-  <title>Cadastrar Equipamento</title>
+  <title>Editar Equipamento</title>
   </head>
 
   <body class="container-sm mt-5">
   <form action="{{ route('alterar_equipamento', ['id' => $equipamento->id]) }}" method="POST">
   @csrf
   <h2 class="text-center">
-  Cadastrar Equipamento
+  Editar Equipamento
         </h2>
-  <div class="form-group">
+        <div class="form-group">
     <label for="">Nome</label> <br />
-    <input type="text" name="nome" class="form-control" value="{{$equipamento->nome}}"> <br />
+    <input type="text" name="nome" class="form-control" value="{{ $equipamento->equi_nome }}"> <br />
   </div>
   <div class="form-group">
     <label for="">Número de Patrimônio</label> <br />
-    <input type="text" name="numeroPatrimonio" class="form-control" value="{{$equipamento->numeroPatrimonio}}"> <br />
+    <input type="text" name="numeroPatrimonio" class="form-control" value="{{ $equipamento->equi_num_pat }}"> <br />
   </div>
   <div class="form-group">
     <label for="">Empresa Associada</label> <br />
-    <input type="text" name="empresaAssociada" class="form-control" value="{{$equipamento->empresaAssociada}}"> <br />
+    <input type="text" name="empresaAssociada" class="form-control" value="{{ $equipamento->equi_empresa_assoc }}"> <br />
   </div>
   <div class="form-group">
     <label for="">Setor de Origem</label> <br />
-    <input type="text" name="setorDeOrigem" class="form-control" value="{{$equipamento->setorDeOrigem}}" > <br />
+    <input type="text" name="setorDeOrigem" class="form-control" value="{{ $equipamento->equi_setor_origem }}" > <br />
   </div>
   <div class="form-group">
     <label for="">Setor Alocado</label> <br />
-    <input type="text" name="setorAlocado" class="form-control" value="{{$equipamento->setorAlocado}}" > <br />
+    <input type="text" name="setorAlocado" class="form-control" value="{{ $equipamento->equi_setor_aloc }}" > <br />
   </div>
   <div class="form-group">
     <label for="">Data de Aquisição</label> <br />
-    <input type="date" name="dataDeAquisicao" class="form-control" value="{{$equipamento->dataDeAquisicao}}"> <br />
+    <input type="date" name="dataDeAquisicao" class="form-control" value="{{ $equipamento->equi_data_aquisicao }}"> <br />
   </div>
   <div class="form-group">
     <label for="">Valor do Bem</label> <br />
-    <input type="text" name="valorDoBem" class="form-control" value="{{$equipamento->valorDoBem}}"> <br />
+    <input type="text" name="valorDoBem" class="form-control" value="{{ $equipamento->equi_valor_do_bem }}"> <br />
   </div>
   <div class="form-group">
             <label>Status</label><br>
-            <input type="text" name="status" list="statusEq" class="form-control">
+            <input type="text" name="status" list="statusEq" class="form-control" value="{{ $equipamento->status }}">
     <datalist id="statusEq">
       <option value="disponivel">
       <option value="indisponivel">
@@ -57,9 +57,11 @@
         </div>
   <div class="form-group">
     <label for="">Descrição</label> <br />
-    <textarea name="descricao" class="form-control" value="{{$equipamento->descricao}}"></textarea>
+    <textarea name="descricao" class="form-control"><?php echo $equipamento->equi_descricao; ?></textarea>
   </div>
-  
+  <div class="form-group">
+  <label for=""></label> <br />
+  </div>
   <button type="submit" class="btn btn-primary
                     btn-block">Salvar</button>
 </form>

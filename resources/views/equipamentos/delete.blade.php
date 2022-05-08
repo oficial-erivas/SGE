@@ -14,14 +14,17 @@
   </head>
 
   <body class="container-sm mt-5">
-  <form action="{{route('excluir_equipamento', ['id' -> $equipamento->id])}}" method="POST">
+  <form action="{{ route('excluir_equipamento', ['id' => $equipamento->id]) }}" method="POST">
   @csrf
   <h2 class="text-center">
   Deletar Equipamento
         </h2>
   <div class="form-group">
     <label for="">Tem certeza que deseja excluir este produto?</label> <br />
-    <input type="text" name="nome" class="form-control" value="{{$equipamento->nome}}"> <br />
+    <input type="text" name="nome" class="form-control" value="{{$equipamento->equi_nome}}"> <br />
+  </div>
+  <div class="form-group">
+  <label for=""></label> <br />
   </div>
   <button type="submit" class="btn btn-primary
                     btn-block">Sim</button>

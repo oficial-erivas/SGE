@@ -55,15 +55,13 @@
       <option value="indisponivel">
     </datalist>
         </div>
-        <div class="form-group">
-    <label for="">Nome</label> <br />
-    <input type="text" name="nome" class="form-control"> <br />
-  </div>
   <div class="form-group">
     <label for="">Descrição</label> <br />
     <textarea name="descricao" class="form-control"></textarea>
   </div>
-  
+  <div class="form-group">
+  <label for=""></label> <br />
+  </div>
   <button type="submit" class="btn btn-primary
                     btn-block">Cadastrar</button>
 </form>

@@ -13,4 +13,6 @@ class Emprestimo extends Model
     {
         return $this->belongsTo(Equipamento::class);
     } 
+
+    protected $fillable = ['emp_data_emprestimo','emp_data_devolucao','emp_descricao','emp_status','avaliacao','colab_id','colabResp_id','tec_id','equi_id'];
 }

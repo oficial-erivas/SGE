@@ -16,10 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
-Route::get('/colaborador', function () {
-    return view('perfis.colaborador');
-});
 
+Route::get('/colaborador','App\Http\Controllers\ColaboradorController@getEquipamentos');
 Route::get('/equipamentos/novo','App\Http\Controllers\EquipamentosController@create');
 Route::post('/equipamentos/novo','App\Http\Controllers\EquipamentosController@store')->name('registrar_equipamento');
 Route::get('/equipamentos/ver/{id}','App\Http\Controllers\EquipamentosController@show');
@@ -27,3 +25,5 @@ Route::get('/equipamentos/editar/{id}','App\Http\Controllers\EquipamentosControl
 Route::post('/equipamentos/editar/{id}','App\Http\Controllers\EquipamentosController@update')->name('alterar_equipamento');
 Route::get('/equipamentos/excluir/{id}','App\Http\Controllers\EquipamentosController@delete');
 Route::post('/equipamentos/excluir/{id}','App\Http\Controllers\EquipamentosController@destroy')->name('excluir_equipamento');
+Route::get('/emprestimos/novo/{id}','App\Http\Controllers\EmprestimosController@create')->name('solictar_emprestimo');
+Route::post('/emprestimos/novo/{id}','App\Http\Controllers\EmprestimosController@store')->name('criar_emprestimo');

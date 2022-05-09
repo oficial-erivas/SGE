@@ -18,4 +18,6 @@ class Colaborador extends Model
     {
         return $this->hasMany(Reserva::class);
     } 
+
+    protected $fillable = ['id','colab_login','colab_senha','colab_cpf','colab_rg','colab_nome','colab_setor','colab_atrib','colab_tel','colab_email','colab_matricula'];
 }

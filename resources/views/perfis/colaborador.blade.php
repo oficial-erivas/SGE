@@ -38,7 +38,7 @@
               <a href="">
                   <span class="btn btn-primary"><i class="far fa-eye">Vizualizar</span>
                 </a>
-                <a href="{{route('solicitar_emprestimo'), ['id' => $equipamentos->id])}}">
+                <a href="{{route('solicitar_emprestimo', ['equi_id'=>$equipamentos->id , 'colab_id'=>$colaborador->id])}}">
                   <span class="btn btn-success"><i class="fas fa-edit">Empréstimo</span>
                 </a>
                 <a href="">

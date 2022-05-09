@@ -14,7 +14,7 @@
   </head>
 
   <body class="container-sm mt-5">
-  <form action="{{ route('criar_emprestimo') , ['id' => $equipamento->id])}}" method="POST">
+  <form action="{{ route('criar_emprestimo' , ['equi_id'=>$equipamentos->id , 'colab_id'=>$colaborador->id])}}" method="POST">
   @csrf
   <h2 class="text-center">
  Empréstimo <?php echo $equipamento->equi_nome; ?>

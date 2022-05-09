@@ -13,4 +13,6 @@ class Tecnico extends Model
     {
         return $this->hasMany(Emprestimo::class);
     }
+
+    protected $fillable = ['id','tec_login','tec_senha','tec_cpf','tec_rg','tec_nome','tec_setor','tec_atrib','tec_tel','tec_email','tec_matricula'];
 }

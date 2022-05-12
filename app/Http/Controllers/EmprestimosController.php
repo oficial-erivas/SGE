@@ -34,6 +34,68 @@ class EmprestimosController extends Controller
             'equi_id' => $equi_id,
             'avaliacao'=>' ',
         ]);
-        return "Empréstimo criado com sucesso";
+        return "Empréstimo solicitado, após liberação do Colaborador Responsável, técnico irá levar o equipamento";
+    }
+
+    public function show($id){
+        $emprestimo= Emprestimo::findOrFail($id); 
+        return view('emprestimos.show', ['emprestimo' => $emprestimo]);
+    }
+
+    public function solicitarDevolucao($emp_id, $equi_id){
+        $equipamento= Equipamento::findOrFail($equi_id); 
+        $emprestimo= Emprestimo::findOrFail($emp_id);
+        if($emprestimo->emp_status!='emAndamento (liberado)'){
+            return "Devolução Impossibilitada";
+        }
+        return view('emprestimos.confirm', ['equipamento' => $equipamento, 'emprestimo'=>$emprestimo]);
+    }
+
+    public function devolver($id){ //id do emprestimo
+        $emprestimo= Emprestimo::findOrFail($id);
+        $emprestimo->update([ 
+            'emp_status' => 'solicitadaDevolucao',
+        ]);
+        return "Devolução do empréstimo solicitada, técnico irá recolher o equipamento";
+    }
+
+    public function liberar($id){ //id do emprestimo
+        $emprestimo= Emprestimo::findOrFail($id);
+        $emprestimo->update([ 
+            'emp_status' => 'emAndamento (liberado)',
+        ]);
+        return "Emprestimo liberado, técnico será notificado para levar o equipamento";
+    }
+    public function entregar($id){ //id do emprestimo
+        $emprestimo= Emprestimo::findOrFail($id);
+        $emprestimo->update([ 
+            'emp_status' => 'emAndamento (entregue)',
+        ]);
+        $equipamento= Equipamento::findOrFail($emprestimo->equi_id);
+        $colaborador= Colaborador::findOrFail($emprestimo->colab_id);
+        $equipamento->update([ 
+            'equi_setor_aloc' =>$colaborador->colab_setor ,
+        ]);
+        return "Equipamento entregue";
+    }
+
+    public function confirmarDevolucao($id){ //id do emprestimo
+        $emprestimo= Emprestimo::findOrFail($id);
+        $emprestimo->update([ 
+            'emp_status' => 'encerrado',
+        ]);
+        $equipamento= Equipamento::findOrFail($emprestimo->equi_id);
+        $colaboradorResp= ColaboradorResp::findOrFail($emprestimo->colabResp_id);
+        $equipamento->update([ 
+            'equi_setor_aloc' =>$colaboradorResp->colabResp_setor ,
+        ]); 
+            return view('tecnico.avaliar', ['equipamento' => $equipamento, 'emprestimo'=>$emprestimo]);
+    }
+    public function avaliar(Request $request, $id){
+        $equipamento = Equipamento::findOrFail($id);
+        $equipamento->update([ 
+            'avaliacao'=>$request->avaliacao,
+        ]);
+        return "Equipamento devolvido e avaliado com sucesso";
     }
 }

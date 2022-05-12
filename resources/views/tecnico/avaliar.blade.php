@@ -10,28 +10,28 @@
   <meta name="author" content="" />
   <link rel="stylesheet" href=
 "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-  <title>Solicitar Empréstimo</title>
+  <title>Devolver Equipamento</title>
   </head>
 
   <body class="container-sm mt-5">
-  <form action="{{ route('criar_emprestimo' , ['equi_id'=>$equipamento->id , 'colab_id'=>$colaborador->id])}}" method="POST">
+  <form action="{{ route('avaliar_emprestimo', ['id' => $emprestimo->id]) }}" method="POST">
   @csrf
   <h2 class="text-center">
- Empréstimo <?php echo $equipamento->equi_nome; ?>
+  Avaliar Equipamento
         </h2>
   <div class="form-group">
-    <label for="">Data de Devolução</label> <br />
-    <input type="date" name="dataDeDevolucao" class="form-control"> <br />
+    <label for="">Avalie o estado do equipamento devolvido</label> <br />
+    <input type="text" name="nome" class="form-control" value="{{$equipamento->equi_nome}}"> <br />
   </div>
   <div class="form-group">
-    <label for="">Descrição</label> <br />
-    <textarea name="descricao" class="form-control"></textarea>
+    <label for="">Avaliação</label> <br />
+    <textarea name="avaliacao" class="form-control"></textarea>
   </div>
   <div class="form-group">
   <label for=""></label> <br />
   </div>
   <button type="submit" class="btn btn-primary
-                    btn-block">Confirmar</button>
+                    btn-block">Enviar</button>
 </form>
    
   </body>

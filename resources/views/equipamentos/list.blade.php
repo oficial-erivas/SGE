@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link href="../../css/styles.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-  <title>Equipamentos</title>
-</head>
-
-<body>
-  @include('menu')
-  <h2 class="text-center">
+<h2 class="text-center">
     Equipamentos
   </h2>
   <div class="container-sm mt-5">
@@ -35,7 +20,7 @@
               <td>{{$equipamentos->equi_nome}}</td>
               <td>{{$equipamentos->equi_num_pat}}</td>
               <td>
-              <a href="">
+              <a href="{{route('ver_equipamento', ['id'=>$equipamentos->id])}}">
                   <span class="btn btn-primary"><i class="far fa-eye">Vizualizar</span>
                 </a>
                 <a href="{{route('solicitar_emprestimo', ['equi_id'=>$equipamentos->id , 'colab_id'=>$colaborador->id])}}">
@@ -52,7 +37,3 @@
       </div>
     </div>
   </div>
-
-</body>
-
-</html>

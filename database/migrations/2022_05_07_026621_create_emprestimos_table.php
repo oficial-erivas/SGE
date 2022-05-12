@@ -18,7 +18,7 @@ class CreateEmprestimosTable extends Migration
             $table->date('emp_data_emprestimo');
             $table->date('emp_data_devolucao');
             $table->string('emp_descricao'); 
-            $table->enum('emp_status',['solicitadoEmprestimo', 'emAndamento (liberado)', 'solicitadaDevolucao', 'encerrado']); // mudar para tipo ENUM
+            $table->enum('emp_status',['solicitadoEmprestimo', 'emAndamento (liberado)','emAndamento (entregue)', 'solicitadaDevolucao', 'encerrado']); // mudar para tipo ENUM
             $table->string('avaliacao');
 
             $table->unsignedBigInteger('colab_id');

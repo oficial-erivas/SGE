@@ -29,7 +29,8 @@
             @endforeach
 
             @foreach ($emprestimos as $emprestimo)
-            
+            @if($emprestimo->equi_id == $equipamento->id)
+
             @foreach ($colaboradoresResp as $colaboradorResp)
             @if($colaboradorResp->id == $emprestimo->colabResp_id)
             <td>{{$colaboradorResp->colabResp_nome}}</td>
@@ -53,6 +54,7 @@
               </a>
             </td>
             @break
+            @endif
             @endforeach
           </tr>
           @endforeach

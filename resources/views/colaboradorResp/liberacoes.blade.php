@@ -180,37 +180,42 @@
             </tr>
           </thead>
           <tbody>
-          @foreach ($equipamentos as $equipamentos)
+          @foreach ($equipamentos as $equipamento)
           <tr>
-            <th scope="row">{{$equipamentos->equi_nome}}</th>
-            <td>{{$equipamentos->equi_num_pat}}</td>
+            <th scope="row">{{$equipamento->equi_nome}}</th>
+            <td>{{$equipamento->equi_num_pat}}</td>
 
-            @foreach ($emprestimos as $emprestimos)
+            @foreach ($emprestimos as $emprestimo)
+            @if($emprestimo->equi_id == $equipamento->id)
 
-            @foreach ($colaboradores as $colaboradores)
-            @if($colaboradores->id == $emprestimos->colab_id)
-            <td>{{$colaboradores->colab_nome}}</td>
-            <td>{{$colaboradores->colab_setor}}</td>
+            @foreach ($colaboradores as $colaborador)
+            @if($colaborador->id == $emprestimo->colab_id)
+            <td>{{$colaborador->colab_nome}}</td>
+            <td>{{$colaborador->colab_setor}}</td>
+            @break
             @endif
             @endforeach
             
-            @foreach ($tecnicos as $tecnicos)
-            @if($tecnicos->id == $emprestimos->tec_id)
-            <td>{{$tecnicos->tec_nome}}</td>
+            @foreach ($tecnicos as $tecnico)
+            @if($tecnico->id == $emprestimo->tec_id)
+            <td>{{$tecnico->tec_nome}}</td>
+            @break
             @endif
             @endforeach
               <td>
-                <a  href="{{route('ver_emprestimo', ['id'=>$emprestimos->id])}}" class="">
+                <a  href="{{route('ver_emprestimo', ['id'=>$emprestimo->id])}}" class="">
                   <span class="btn btn-sm btn-primary"
                     ><i class="far fa-eye"> Visualizar</i></span
                   >
                 </a>
-                <a href="{{route('liberar_emprestimo', ['id'=>$emprestimos->id])}}">
+                <a href="{{route('liberar_emprestimo', ['id'=>$emprestimo->id])}}">
                   <span class="btn btn-sm btn-success"
                     ><i class="fas fa-unlock"> Liberar</i></span
                   >
                 </a>
               </td>
+              @break
+              @endif
             @endforeach
           </tr>
          @endforeach

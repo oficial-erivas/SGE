@@ -183,27 +183,30 @@
           </thead>
           <tbody>
           
-        @foreach ($equipamentos as $equipamentos)
+        @foreach ($equipamentos as $equipamento)
           <tr>
-            <th scope="row">{{$equipamentos->equi_nome}}</th>
-            <td>{{$equipamentos->equi_num_pat}}</td>
+            <th scope="row">{{$equipamento->equi_nome}}</th>
+            <td>{{$equipamento->equi_num_pat}}</td>
 
-            @foreach ($emprestimos as $emprestimos)
+            @foreach ($emprestimos as $emprestimo)
+            @if($emprestimo->equi_id == $equipamento->id)
 
-            @foreach ($colaboradores as $colaboradores)
-            @if($colaboradores->id == $emprestimos->colab_id)
-            <td>{{$colaboradores->colab_nome}}</td>
-            <td>{{$colaboradores->colab_setor}}</td>
+            @foreach ($colaboradores as $colaborador)
+            @if($colaborador->id == $emprestimo->colab_id)
+            <td>{{$colaborador->colab_nome}}</td>
+            <td>{{$colaborador->colab_setor}}</td>
+            @break
             @endif
             @endforeach
             
-            @foreach ($colaboradoresResp as $colaboradoresResp)
-            @if($colaboradoresResp->id == $colaboradoresResp->colabResp_id)
-            <td>{{$colaboradoresResp->colabResp_nome}}</td>
+            @foreach ($colaboradoresResp as $colaboradorResp)
+            @if($colaboradorResp->id == $colaboradorResp->colabResp_id)
+            <td>{{$colaboradorResp->colabResp_nome}}</td>
+            @break
             @endif
             @endforeach
             <td>
-                <a href="{{route('confirmarDevolucao_emprestimo', ['id'=>$emprestimos->id])}}">
+                <a href="{{route('confirmarDevolucao_emprestimo', ['id'=>$emprestimo->id])}}">
                   <span
                     class="btn btn-sm btn-success"
                     alt="Clique aqui quando o equipamento tiver sido entregue"
@@ -211,6 +214,8 @@
                   >
                 </a>
               </td>
+              @break
+              @endif
              @endforeach
           </tr>
           @endforeach 

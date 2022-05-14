@@ -29,7 +29,8 @@ public function getEmprestimos($id)// $id do colabResp , todo colabResp tbm exis
         $emprestimos=collect();
     }
     else{
-    $emprestimos = Emprestimo::where('colab_id', $colaborador->id)->get();
+        $emprestimos = Emprestimo::where('colab_id', $colaborador->id)->where('emp_status','!=','encerrado')->get();
+
     }
     $equipamentos=collect();
     $colaboradoresResp=collect();

@@ -1,18 +1,17 @@
-<h2 class="text-center">
-  Meus Empréstimos
-</h2>
-<div class="container-sm mt-5">
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-bordered table-hover">
+<div class="py-4"></div>
+    <div class="container py-4">
+      <div class="row">
+        <h3>Meus Empréstimos</h3>
+      </div>
+      <table class="table table-hover">
         <thead>
-          <tr>
-            <th scope="col">Nome do Equipamento</th>
-            <th scope="col">Número de Patrimônio</th>
+        <tr>
+            <th scope="col">Equipamento</th>
+            <th scope="col">Nº Patrimônio</th>
             <th scope="col">Status</th>
             <th scope="col">Colaborador Responsável</th>
             <th scope="col">Técnico Responsável</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Ações</th>
           </tr>
         </thead>
         <tbody>

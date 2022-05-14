@@ -94,16 +94,19 @@
           </a>
           <!-- Left links -->
           <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="">Meus Empréstimos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Equipamentos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Relatórios</a>
-            </li>
-          </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('ver_emprestimosR', ['id'=>$colaborador->id])}}">Meus Empréstimos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('ver_equipamentosR', ['id'=>$colaborador->id])}}">Equipamentos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('ver_liberacoes', ['id'=>$colaborador->id])}}">Liberações Pendentes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Relatórios</a>
+              </li>
+            </ul>
           <!-- Left links -->
         </div>
         <!-- Collapsible wrapper -->

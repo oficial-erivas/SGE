@@ -24,7 +24,7 @@ class ColaboradorController extends Controller
 public function getEmprestimos($id)// $id do colab
 {
     $colaborador= Colaborador::findOrFail($id);
-    $emprestimos = Emprestimo::where('colab_id', $id)->get();
+    $emprestimos = Emprestimo::where('colab_id', $id)->where('emp_status','!=','encerrado')->get();
     $equipamentos=collect();
     $colaboradoresResp=collect();
     $tecnicos=collect();

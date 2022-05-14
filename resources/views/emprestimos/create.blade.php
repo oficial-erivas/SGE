@@ -96,16 +96,16 @@
             <!-- Left links -->
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#">Meus Empréstimos</a>
+                <a class="nav-link" href="">Meus Empréstimos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Equipamentos</a>
+                <a class="nav-link" href="">Equipamentos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Liberações Pendentes</a>
+                <a class="nav-link" href="">Liberações Pendentes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Relatórios</a>
+                <a class="nav-link" href="">Relatórios</a>
               </li>
             </ul>
             <!-- Left links -->
@@ -137,10 +137,10 @@
                 aria-labelledby="navbarDropdownMenuAvatar"
               >
                 <li>
-                  <a class="dropdown-item" href="#">Meu perfil</a>
+                  <a class="dropdown-item" href="">Meu perfil</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">Sair</a>
+                  <a class="dropdown-item" href="">Sair</a>
                 </li>
               </ul>
             </div>

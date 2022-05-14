@@ -1,7 +1,7 @@
 <div class="py-4"></div>
     <div class="container py-4">
       <div class="row">
-        <h3>Meus Empréstimos</h3>
+        <h3>Empréstimos em Aberto</h3>
       </div>
       <table class="table table-hover">
         <thead>
@@ -16,36 +16,43 @@
         </thead>
         <tbody>
 
-        @foreach ($equipamentos as $equipamentos)
+        @foreach ($equipamentos as $equipamento)
           <tr>
-            <th scope="row">{{$equipamentos->equi_nome}}</th>
-            <td>{{$equipamentos->equi_num_pat}}</td>
+            <th scope="row">{{$equipamento->equi_nome}}</th>
+            <td>{{$equipamento->equi_num_pat}}</td>
 
-            @foreach ($emprestimos as $emprestimos)
-            @if($emprestimos->equi_id == $equipamentos->id)
-            <td>{{$emprestimos->emp_status}}</td>
+            @foreach ($emprestimos as $emprestimo)
+            @if($emprestimo->equi_id == $equipamento->id)
+            <td>{{$emprestimo->emp_status}}</td>
+            @break
             @endif
+            @endforeach
 
-            @foreach ($colaboradoresResp as $colaboradoresResp)
-            @if($colaboradoresResp->id == $emprestimos->colabResp_id)
-            <td>{{$colaboradoresResp->colabResp_nome}}</td>
+            @foreach ($emprestimos as $emprestimo)
+            
+            @foreach ($colaboradoresResp as $colaboradorResp)
+            @if($colaboradorResp->id == $emprestimo->colabResp_id)
+            <td>{{$colaboradorResp->colabResp_nome}}</td>
+            @break
             @endif
             @endforeach
             
-            @foreach ($tecnicos as $tecnicos)
-            @if($tecnicos->id == $emprestimos->tec_id)
-            <td>{{$tecnicos->tec_nome}}</td>
+            @foreach ($tecnicos as $tecnico)
+            @if($tecnico->id == $emprestimo->tec_id)
+            <td>{{$tecnico->tec_nome}}</td>
+            @break
             @endif
             @endforeach
             <td>
-              <a href="{{route('ver_emprestimo', ['id'=>$emprestimos->id])}}">
+              <a href="{{route('ver_emprestimo', ['id'=>$emprestimo->id])}}">
                 <span class="btn btn-primary"><i class="far fa-eye">Vizualizar</span>
               </a>
              
-              <a href="{{route('solicitar_devolucao', ['emp_id'=>$emprestimos->id, 'equi_id'=>$equipamentos->id])}}" >
+              <a href="{{route('solicitar_devolucao', ['emp_id'=>$emprestimo->id, 'equi_id'=>$equipamento->id])}}" >
                 <span class="btn btn-success"><i class="fas fa-edit">Devolver</span>
               </a>
             </td>
+            @break
             @endforeach
           </tr>
           @endforeach

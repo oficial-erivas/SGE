@@ -22,7 +22,7 @@ class EmprestimosController extends Controller
         $equipamento = Equipamento::findOrFail($equi_id);
         $colaboradorResp = ColaboradorResp::where('colabResp_setor', $equipamento->equi_setor_origem)->first();
         $tecnico = Tecnico::where('tec_setor', $equipamento->equi_setor_origem)->first();
-
+        $equipamento->update(['status'=>'indisponivel' ]);
         Emprestimo::create([ 
             'emp_data_devolucao' => $request->dataDeDevolucao,
             'emp_descricao'=> $request->descricao,
@@ -45,7 +45,7 @@ class EmprestimosController extends Controller
     public function solicitarDevolucao($emp_id, $equi_id){
         $equipamento= Equipamento::findOrFail($equi_id); 
         $emprestimo= Emprestimo::findOrFail($emp_id);
-        if($emprestimo->emp_status!='emAndamento (liberado)'){
+        if($emprestimo->emp_status!='emAndamento (entregue)'){
             return "Devolução Impossibilitada";
         }
         return view('emprestimos.confirm', ['equipamento' => $equipamento, 'emprestimo'=>$emprestimo]);
@@ -88,6 +88,7 @@ class EmprestimosController extends Controller
         $colaboradorResp= ColaboradorResp::findOrFail($emprestimo->colabResp_id);
         $equipamento->update([ 
             'equi_setor_aloc' =>$colaboradorResp->colabResp_setor ,
+            'status'=>'disponivel' ,
         ]); 
             return view('tecnico.avaliar', ['equipamento' => $equipamento, 'emprestimo'=>$emprestimo]);
     }

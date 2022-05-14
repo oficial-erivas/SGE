@@ -96,10 +96,10 @@
             <!-- Left links -->
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#">Equipamentos Solicitados</a>
+                <a class="nav-link" href="">Equipamentos Solicitados</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Devoluções Solicitadas</a>
+                <a class="nav-link" href="">Devoluções Solicitadas</a>
               </li>
             </ul>
             <!-- Left links -->
@@ -131,10 +131,10 @@
                 aria-labelledby="navbarDropdownMenuAvatar"
               >
                 <li>
-                  <a class="dropdown-item" href="#">Meu perfil</a>
+                  <a class="dropdown-item" href="">Meu perfil</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">Sair</a>
+                  <a class="dropdown-item" href="">Sair</a>
                 </li>
               </ul>
             </div>
@@ -150,7 +150,8 @@
         <h3>Avaliar Equipamento</h3>
       </div>
       <form action="{{ route('avaliar_emprestimo', ['id' => $emprestimo->id]) }}" method="POST">
-        <div class="form-group">
+      @csrf  
+      <div class="form-group">
           <label for="">Avalie o estado do equipamento devolvido</label> <br />
           <input
             type="text"

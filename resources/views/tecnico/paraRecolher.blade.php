@@ -90,7 +90,7 @@
             id="navbarSupportedContent"
           >
             <!-- Navbar brand -->
-            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <a class="navbar-brand mt-2 mt-lg-0" href="">
               <h3>SGEH</h3>
             </a>
             <!-- Left links -->
@@ -139,10 +139,10 @@
                 aria-labelledby="navbarDropdownMenuAvatar"
               >
                 <li>
-                  <a class="dropdown-item" href="#">Meu perfil</a>
+                  <a class="dropdown-item" href="">Meu perfil</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">Sair</a>
+                  <a class="dropdown-item" href="">Sair</a>
                 </li>
               </ul>
             </div>

@@ -12,6 +12,86 @@ use App\Models\Tecnico;
 class ColaboradorRespController extends Controller
 {
   //Falta CRUD
+  public function create(){
+    return view('colaboradorResp.create');
+}
+
+public function store(Request $request){
+    ColaboradorResp::create([ 
+        'colabResp_login' => $request->login,
+        'colabResp_senha'=> $request->senha,
+        'colabResp_cpf' => $request->cpf,
+        'colabResp_rg' => $request->rg,
+        'colabResp_nome' => $request->nome,
+        'colabResp_setor' => $request->setor,
+        'colabResp_tel' => $request->telefone,
+        'colabResp_email'=> $request->email,
+        'colabResp_matricula' => $request->matricula,
+    ]);
+
+    Colaborador::create([ 
+        'colab_login' => $request->login,
+        'colab_senha'=> $request->senha,
+        'colab_cpf' => $request->cpf,
+        'colab_rg' => $request->rg,
+        'colab_nome' => $request->nome,
+        'colab_setor' => $request->setor,
+        'colab_tel' => $request->telefone,
+        'colab_email'=> $request->email,
+        'colab_matricula' => $request->matricula,
+    ]);
+
+    return "Colaborador criado com sucesso";
+}
+
+public function show($id){
+    $colaboradorResp= ColaboradorResp::findOrFail($id); // precisa da Model
+    return view('colaboradorResp.show', ['colaborador' => $colaboradorResp]);
+}
+
+public function edit($id){
+    $colaboradorResp= ColaboradorResp::findOrFail($id); // precisa da Model
+    return view('colaboradorResp.edit', ['colaborador' => $colaboradorResp]);
+}
+
+public function update(Request $request, $id){
+    $colaboradorResp= ColaboradorResp::findOrFail($id);
+    $colaborador->update([ 
+        'colab_login' => $request->login,
+        'colab_senha'=> $request->senha,
+        'colab_cpf' => $request->cpf,
+        'colab_rg' => $request->rg,
+        'colab_nome' => $request->nome,
+        'colab_setor' => $request->setor,
+        'colab_tel' => $request->telefone,
+        'colab_email'=> $request->email,
+        'colab_matricula' => $request->matricula,
+    ]);
+
+    $colaboradorResp->update([ 
+        'colabResp_login' => $request->login,
+        'colabResp_senha'=> $request->senha,
+        'colabResp_cpf' => $request->cpf,
+        'colabResp_rg' => $request->rg,
+        'colabResp_nome' => $request->nome,
+        'colabResp_setor' => $request->setor,
+        'colabResp_tel' => $request->telefone,
+        'colabResp_email'=> $request->email,
+        'colabResp_matricula' => $request->matricula,
+    ]);
+
+    return "Colaborador atualizado com sucesso";
+}
+
+public function delete($id){
+    $colaboradorResp= ColaboradorResp::findOrFail($id); // precisa da Model
+    return view('colaboradorResp.delete', ['colaborador' => $colaboradorResp]);
+}
+public function destroy($id){
+    $colaboradorResp= ColaboradorResp::findOrFail($id); // precisa da Model
+    $colaboradorResp->delete();
+    return "colaborador excluído com sucesso";
+}
 
     public function getEquipamentos($id)// $id do colabResp
 {
@@ -29,8 +109,7 @@ public function getEmprestimos($id)// $id do colabResp , todo colabResp tbm exis
         $emprestimos=collect();
     }
     else{
-        $emprestimos = Emprestimo::where('colab_id', $colaborador->id)->where('emp_status','!=','encerrado')->get();
-
+    $emprestimos = Emprestimo::where('colab_id', $colaborador->id)->get();
     }
     $equipamentos=collect();
     $colaboradoresResp=collect();

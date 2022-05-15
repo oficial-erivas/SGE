@@ -12,6 +12,60 @@ use App\Models\Tecnico;
 class TecnicoController extends Controller
 {
   //Falta CRUD
+  public function create(){
+    return view('tecnico.create');
+}
+
+public function store(Request $request){
+    Tecnico::create([ 
+        'tec_login' => $request->login,
+        'tec_senha'=> $request->senha,
+        'teccpf' => $request->cpf,
+        'tec_rg' => $request->rg,
+        'tec_nome' => $request->nome,
+        'tec_setor' => $request->setor,
+        'tec_tel' => $request->telefone,
+        'tec_email'=> $request->email,
+        'tec_matricula' => $request->matricula,
+    ]);
+    return "Tecnico criado com sucesso";
+}
+
+public function show($id){
+  $tecnico= Tecnico::findOrFail($id); // precisa da Model
+    return view('tecnico.show', ['tecnico' => $tecnico]);
+}
+
+public function edit($id){
+  $tecnico= Tecnico::findOrFail($id); // precisa da Model
+    return view('tecnico.edit', ['tecnico' => $tecnico]);
+}
+
+public function update(Request $request, $id){
+  $tecnico= Tecnico::findOrFail($id);
+    $$tecnico->update([ 
+      'tec_login' => $request->login,
+      'tec_senha'=> $request->senha,
+      'teccpf' => $request->cpf,
+      'tec_rg' => $request->rg,
+      'tec_nome' => $request->nome,
+      'tec_setor' => $request->setor,
+      'tec_tel' => $request->telefone,
+      'tec_email'=> $request->email,
+      'tec_matricula' => $request->matricula,
+    ]);
+    return "Tecnico atualizado com sucesso";
+}
+
+public function delete($id){
+  $tecnico= Tecnico::findOrFail($id); // precisa da Model
+    return view('tecnico.delete', ['tecnico' => $tecnico]);
+}
+public function destroy($id){
+    $tecnico= Tecnico::findOrFail($id); // precisa da Model
+    $tecnico->delete();
+    return "tecnico excluído com sucesso";
+}
 
 
 public function getEquiEntregar($id)// $id do tecnico

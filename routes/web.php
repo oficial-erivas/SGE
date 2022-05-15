@@ -20,13 +20,34 @@ Route::get('/', function () {
 //id do colaborador
 Route::get('/colaborador/equipamentos/{id}','App\Http\Controllers\ColaboradorController@getEquipamentos')->name('ver_equipamentos');
 Route::get('/colaborador/emprestimos/{id}','App\Http\Controllers\ColaboradorController@getEmprestimos')->name('ver_emprestimos');
+Route::get('/colaborador/novo','App\Http\Controllers\ColaboradorController@create');
+Route::post('/colaborador/novo','App\Http\Controllers\ColaboradorController@store')->name('registrar_colaborador');
+Route::get('/colaborador/ver/{id}','App\Http\Controllers\ColaboradorController@show')->name('ver_colaborador');
+Route::get('/colaborador/editar/{id}','App\Http\Controllers\ColaboradorController@edit');
+Route::post('/colaborador/editar/{id}','App\Http\Controllers\ColaboradorController@update')->name('alterar_colaborador');
+Route::get('/colaborador/excluir/{id}','App\Http\Controllers\ColaboradorController@delete');
+Route::post('/colaborador/excluir/{id}','App\Http\Controllers\ColaboradorController@destroy')->name('excluir_colaborador');
 
 //id do colabResp
+Route::get('/colaborador/novo','App\Http\Controllers\ColaboradorRespController@create');
+Route::post('/colaborador/novo','App\Http\Controllers\ColaboradorRespController@store')->name('registrar_colabResp');
+Route::get('/colaborador/ver/{id}','App\Http\Controllers\ColaboradorRespController@show')->name('ver_colabResp');
+Route::get('/colaborador/editar/{id}','App\Http\Controllers\ColaboradorRespController@edit');
+Route::post('/colaborador/editar/{id}','App\Http\Controllers\ColaboradorRespController@update')->name('alterar_colabResp');
+Route::get('/colaborador/excluir/{id}','App\Http\Controllers\ColaboradorRespController@delete');
+Route::post('/colaborador/excluir/{id}','App\Http\Controllers\ColaboradorRespController@destroy')->name('excluir_ccolabResp');
 Route::get('/colaboradorResp/equipamentos/{id}','App\Http\Controllers\ColaboradorRespController@getEquipamentos')->name('ver_equipamentosR');
 Route::get('/colaboradorResp/emprestimos/{id}','App\Http\Controllers\ColaboradorRespController@getEmprestimos')->name('ver_emprestimosR');
 Route::get('/colaboradorResp/liberacoes/{id}','App\Http\Controllers\ColaboradorRespController@getLiberacoes')->name('ver_liberacoes');
 
 //id do tecncio
+Route::get('/tecnico/novo','App\Http\Controllers\TecnicoController@create');
+Route::post('/tecnico/novo','App\Http\Controllers\TecnicoController@store')->name('registrar_tecnico');
+Route::get('/tecnico/ver/{id}','App\Http\Controllers\TecnicoController@show')->name('ver_tecnico');
+Route::get('/tecnico/editar/{id}','App\Http\Controllers\TecnicoController@edit');
+Route::post('/tecnico/editar/{id}','App\Http\Controllers\TecnicoController@update')->name('alterar_tecnico');
+Route::get('/tecnico/excluir/{id}','App\Http\Controllers\TecnicoController@delete');
+Route::post('/tecnico/excluir/{id}','App\Http\Controllers\TecnicoController@destroy')->name('excluir_tecnico');
 Route::get('/tecnico/equiEntregar/{id}','App\Http\Controllers\TecnicoController@getEquiEntregar')->name('Aentregar_equipamentos');
 Route::get('/tecnico/equiRecolher/{id}','App\Http\Controllers\TecnicoController@getEquiRecolher')->name('Arecolher_equipamentos');
 

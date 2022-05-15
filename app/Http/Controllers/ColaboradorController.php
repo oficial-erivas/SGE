@@ -12,6 +12,60 @@ use App\Models\Tecnico;
 class ColaboradorController extends Controller
 {
   //Falta CRUD
+  public function create(){
+    return view('colaborador.create');
+}
+
+public function store(Request $request){
+    Colaborador::create([ 
+        'colab_login' => $request->login,
+        'colab_senha'=> $request->senha,
+        'colab_cpf' => $request->cpf,
+        'colab_rg' => $request->rg,
+        'colab_nome' => $request->nome,
+        'colab_setor' => $request->setor,
+        'colab_tel' => $request->telefone,
+        'colab_email'=> $request->email,
+        'colab_matricula' => $request->matricula,
+    ]);
+    return "Colaborador criado com sucesso";
+}
+
+public function show($id){
+    $colaborador= Colaborador::findOrFail($id); // precisa da Model
+    return view('colaborador.show', ['colaborador' => $colaborador]);
+}
+
+public function edit($id){
+    $colaborador= Colaborador::findOrFail($id); // precisa da Model
+    return view('colaborador.edit', ['colaborador' => $colaborador]);
+}
+
+public function update(Request $request, $id){
+    $colaborador= Colaborador::findOrFail($id);
+    $colaborador->update([ 
+        'colab_login' => $request->login,
+        'colab_senha'=> $request->senha,
+        'colab_cpf' => $request->cpf,
+        'colab_rg' => $request->rg,
+        'colab_nome' => $request->nome,
+        'colab_setor' => $request->setor,
+        'colab_tel' => $request->telefone,
+        'colab_email'=> $request->email,
+        'colab_matricula' => $request->matricula,
+    ]);
+    return "Colaborador atualizado com sucesso";
+}
+
+public function delete($id){
+    $colaborador= Colaborador::findOrFail($id); // precisa da Model
+    return view('colaborador.delete', ['colaborador' => $colaborador]);
+}
+public function destroy($id){
+    $colaborador= Colaborador::findOrFail($id); // precisa da Model
+    $colaborador->delete();
+    return "colaborador excluído com sucesso";
+}
 
     public function getEquipamentos($id)// $id do colab
 {
@@ -21,10 +75,12 @@ class ColaboradorController extends Controller
     return view('colaborador.equipamentos', ['colaborador' => $colaborador],compact('equipamentos'));
 }
 
+
+
 public function getEmprestimos($id)// $id do colab
 {
     $colaborador= Colaborador::findOrFail($id);
-    $emprestimos = Emprestimo::where('colab_id', $id)->where('emp_status','!=','encerrado')->get();
+    $emprestimos = Emprestimo::where('colab_id', $id)->get();
     $equipamentos=collect();
     $colaboradoresResp=collect();
     $tecnicos=collect();

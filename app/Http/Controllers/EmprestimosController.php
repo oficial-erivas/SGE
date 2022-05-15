@@ -19,6 +19,15 @@ class EmprestimosController extends Controller
     }
 
     public function store(Request $request, $equi_id, $colab_id){
+        $colaborador=null;
+        $colaboradorResp= ColaboradorResp::findOrFail($colab_id);
+        if($colaboradorResp!=null){
+        $colaborador=Colaborador::where('colab_cpf', $colaboradorResp->colabResp_cpf)->first();
+        }
+        if($colaborador==null){
+            $colaborador= Colaborador::findOrFail($colab_id);
+        }
+
         $equipamento = Equipamento::findOrFail($equi_id);
         $colaboradorResp = ColaboradorResp::where('colabResp_setor', $equipamento->equi_setor_origem)->first();
         $tecnico = Tecnico::where('tec_setor', $equipamento->equi_setor_origem)->first();
@@ -28,7 +37,7 @@ class EmprestimosController extends Controller
             'emp_descricao'=> $request->descricao,
             'emp_status' => 'solicitadoEmprestimo',
             'emp_data_emprestimo' => Carbon::now(),
-            'colab_id' => $colab_id,
+            'colab_id' => $colaborador->id,
             'colabResp_id' => $colaboradorResp->id,
             'tec_id' => $tecnico->id,
             'equi_id' => $equi_id,

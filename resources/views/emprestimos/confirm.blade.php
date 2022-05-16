@@ -90,59 +90,13 @@
             id="navbarSupportedContent"
           >
             <!-- Navbar brand -->
-            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <a class="navbar-brand mt-2 mt-lg-0" href="javascript:history.back();">
               <h3>SGEH</h3>
             </a>
-            <!-- Left links -->
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Meus Empréstimos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Liberações Pendentes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Relatórios</a>
-              </li>
-            </ul>
-            <!-- Left links -->
+
           </div>
           <!-- Collapsible wrapper -->
-
-          <!-- Right elements -->
-          <div class="d-flex align-items-center">
-            <!-- Avatar -->
-            <div class="dropdown">
-              <a
-                class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuAvatar"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                  class="rounded-circle"
-                  height="25"
-                  alt="Black and White Portrait of a Man"
-                  loading="lazy"
-                />
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuAvatar"
-              >
-                <li>
-                  <a class="dropdown-item" href="#">Meu perfil</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Sair</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Right elements -->
+       
         </div>
         <!-- Container wrapper -->
       </nav>
@@ -168,36 +122,20 @@
           />
           <br />
         </div>
-        <div class="form-group"><label for=""></label> <br /></div>
         <div class="form-group py-4">
-          <button type="submit" class="btn btn-secondary">Voltar</button>
+          <a class="btn btn-secondary" href="javascript:history.back();">Voltar</a>
           <button type="submit" class="btn btn-primary">Confirmar</button>
         </div>
       </form>
     </div>
-    <div class="py-4"></div>
-    <div class="py-4"></div>
-    <footer class="text-center text-white" style="background-color: #caced1">
-      <!-- Grid container -->
-      <div>
-        <!-- Section: Images -->
-        <section class="">
-          <img
-            src="https://cdn.glitch.global/d04e99eb-7a74-4fa2-9b7d-caacc853d028/footer.png?v=1652401893913"
-            class="w-100"
-          />
-          <a href="#!">
-            <div style="background-color: rgba(251, 251, 251, 0.2)"></div>
-          </a>
-        </section>
-      </div>
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: #0000cd">
-        © 2022 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">SGEH Inc.</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
+    @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
+ @include('footer')
 
     <!-- <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

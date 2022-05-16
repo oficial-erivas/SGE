@@ -29,13 +29,13 @@ Route::get('/colaborador/excluir/{id}','App\Http\Controllers\ColaboradorControll
 Route::post('/colaborador/excluir/{id}','App\Http\Controllers\ColaboradorController@destroy')->name('excluir_colaborador');
 
 //id do colabResp
-Route::get('/colaborador/novo','App\Http\Controllers\ColaboradorRespController@create');
-Route::post('/colaborador/novo','App\Http\Controllers\ColaboradorRespController@store')->name('registrar_colabResp');
-Route::get('/colaborador/ver/{id}','App\Http\Controllers\ColaboradorRespController@show')->name('ver_colabResp');
-Route::get('/colaborador/editar/{id}','App\Http\Controllers\ColaboradorRespController@edit');
-Route::post('/colaborador/editar/{id}','App\Http\Controllers\ColaboradorRespController@update')->name('alterar_colabResp');
-Route::get('/colaborador/excluir/{id}','App\Http\Controllers\ColaboradorRespController@delete');
-Route::post('/colaborador/excluir/{id}','App\Http\Controllers\ColaboradorRespController@destroy')->name('excluir_ccolabResp');
+Route::get('/colaboradorResp/novo','App\Http\Controllers\ColaboradorRespController@create');
+Route::post('/colaboradorResp/novo','App\Http\Controllers\ColaboradorRespController@store')->name('registrar_colabResp');
+Route::get('/colaboradorResp/ver/{id}','App\Http\Controllers\ColaboradorRespController@show')->name('ver_colabResp');
+Route::get('/colaboradorResp/editar/{id}','App\Http\Controllers\ColaboradorRespController@edit');
+Route::post('/colaboradorResp/editar/{id}','App\Http\Controllers\ColaboradorRespController@update')->name('alterar_colabResp');
+Route::get('/colaboradorResp/excluir/{id}','App\Http\Controllers\ColaboradorRespController@delete');
+Route::post('/colaboradorResp/excluir/{id}','App\Http\Controllers\ColaboradorRespController@destroy')->name('excluir_ccolabResp');
 Route::get('/colaboradorResp/equipamentos/{id}','App\Http\Controllers\ColaboradorRespController@getEquipamentos')->name('ver_equipamentosR');
 Route::get('/colaboradorResp/emprestimos/{id}','App\Http\Controllers\ColaboradorRespController@getEmprestimos')->name('ver_emprestimosR');
 Route::get('/colaboradorResp/liberacoes/{id}','App\Http\Controllers\ColaboradorRespController@getLiberacoes')->name('ver_liberacoes');

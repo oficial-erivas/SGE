@@ -9,8 +9,8 @@
             <th scope="col">Equipamento</th>
             <th scope="col">Nº Patrimônio</th>
             <th scope="col">Status</th>
-            <th scope="col">Colaborador Responsável</th>
-            <th scope="col">Técnico Responsável</th>
+            <th scope="col">Colab. Responsável</th>
+            <th scope="col">Téc. Responsável</th>
             <th scope="col">Ações</th>
           </tr>
         </thead>
@@ -46,11 +46,11 @@
             @endforeach
             <td>
               <a href="{{route('ver_emprestimo', ['id'=>$emprestimo->id])}}">
-                <span class="btn btn-primary"><i class="far fa-eye">Vizualizar</span>
+                <span class="btn btn-sm btn-primary"><i class="far fa-eye"> Visualizar</i></span>
               </a>
              
               <a href="{{route('solicitar_devolucao', ['emp_id'=>$emprestimo->id, 'equi_id'=>$equipamento->id])}}" >
-                <span class="btn btn-success"><i class="fas fa-edit">Devolver</span>
+                <span class="btn btn-sm btn-sm-success"><i class="fas fa-reply"> Devolver</i></span>
               </a>
             </td>
             @break

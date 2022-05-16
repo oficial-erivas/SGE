@@ -27,6 +27,7 @@ public function store(Request $request){
         'colabResp_tel' => $request->telefone,
         'colabResp_email'=> $request->email,
         'colabResp_matricula' => $request->matricula,
+        'colabResp_atrib' => $request->atrib,
     ]);
 
     Colaborador::create([ 
@@ -39,6 +40,7 @@ public function store(Request $request){
         'colab_tel' => $request->telefone,
         'colab_email'=> $request->email,
         'colab_matricula' => $request->matricula,
+        'colab_atrib' => $request->atrib
     ]);
 
     return "Colaborador criado com sucesso";
@@ -46,12 +48,12 @@ public function store(Request $request){
 
 public function show($id){
     $colaboradorResp= ColaboradorResp::findOrFail($id); // precisa da Model
-    return view('colaboradorResp.show', ['colaborador' => $colaboradorResp]);
+    return view('colaboradorResp.show', ['colaboradorResp' => $colaboradorResp]);
 }
 
 public function edit($id){
     $colaboradorResp= ColaboradorResp::findOrFail($id); // precisa da Model
-    return view('colaboradorResp.edit', ['colaborador' => $colaboradorResp]);
+    return view('colaboradorResp.edit', ['colaboradorResp' => $colaboradorResp]);
 }
 
 public function update(Request $request, $id){
@@ -85,7 +87,7 @@ public function update(Request $request, $id){
 
 public function delete($id){
     $colaboradorResp= ColaboradorResp::findOrFail($id); // precisa da Model
-    return view('colaboradorResp.delete', ['colaborador' => $colaboradorResp]);
+    return view('colaboradorResp.delete', ['colaboradorResp' => $colaboradorResp]);
 }
 public function destroy($id){
     $colaboradorResp= ColaboradorResp::findOrFail($id); // precisa da Model

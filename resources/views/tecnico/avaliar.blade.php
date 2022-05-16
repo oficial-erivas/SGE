@@ -166,30 +166,19 @@
           <textarea name="avaliacao" class="form-control"></textarea>
         </div>
         <div class="form-group py-4">
+        <a class="btn btn-secondary" href="javascript:history.back();">Voltar</a>
           <button type="submit" class="btn btn-primary">Confirmar</button>
         </div>
       </form>
     </div>
-    <div class="py-4"></div>
-    <div class="py-4"></div>
-    <footer class="text-center text-white" style="background-color: #caced1">
-      <!-- Grid container -->
-      <div>
-        <!-- Section: Images -->
-        <section>
-          <img
-            src="https://cdn.glitch.global/d04e99eb-7a74-4fa2-9b7d-caacc853d028/footer.png?v=1652401893913"
-            class="w-100"
-          />
-        </section>
-      </div>
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: #0000cd">
-        © 2022 Copyright:
-        <a class="text-white" href="">SGEH Inc.</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
+    @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
+    @include('footer')
 
     <!-- <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

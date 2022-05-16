@@ -27,7 +27,7 @@
       You can write text in a comment and the content won't be visible in the page
     -->
 
-    <title>SGE</title>
+    <title>SGEH</title>
 
     <!-- Meta tags for SEO and social sharing -->
     <link rel="canonical" href="https://glitch-hello-website.glitch.me/" />
@@ -44,7 +44,7 @@
     <meta name="twitter:card" content="summary" />
 
     <!-- Import the webpage's stylesheet -->
-    <!--link rel="stylesheet" href="/style.css" />
+    <!--link rel="stylesheet" href="/style.css" -->
 
     <!-- Import the webpage's javascript file -->
     <!--<script src="/script.js" defer></script> -->
@@ -69,19 +69,21 @@
                 e reservas dos equipamentos dispostos nos setores do hospital.
               </p>
             </div>
-
+      
             <div class="col-lg-6 mb-5 mb-lg-0">
               <div class="card">
                 <div class="card-body py-5 px-md-5">
                   <h3 class="mb-5" style="text-align: center">Entrar</h3>
-                  <form>
-                    <!-- Email input -->
+                  <form action="" name="form1" method="POST">  <!-- adcicionar rota certa -->
+                  @csrf
+                  <!-- Email input -->
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example3"
                         >Usuário</label
                       >
                       <input
                         type="email"
+                        name = "email"
                         id="form3Example3"
                         class="form-control"
                       />
@@ -94,6 +96,7 @@
                       >
                       <input
                         type="password"
+                        name = "senha"
                         id="form3Example4"
                         class="form-control"
                       />
@@ -108,7 +111,7 @@
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio0"
-                          value="option1"
+                          value="1"
                         />
                         <label class="form-check-label" for="inlineRadio1"
                           >Administrador</label
@@ -120,7 +123,7 @@
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio1"
-                          value="option1"
+                          value="2"
                         />
                         <label class="form-check-label" for="inlineRadio1"
                           >Colaborador Responsável</label
@@ -132,7 +135,7 @@
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio2"
-                          value="option2"
+                          value="3"
                         />
                         <label class="form-check-label" for="inlineRadio2"
                           >Colaborador</label
@@ -144,7 +147,7 @@
                           type="radio"
                           name="inlineRadioOptions"
                           id="inlineRadio3"
-                          value="option3"
+                          value="4"
                         />
                         <label class="form-check-label" for="inlineRadio3"
                           >Técnico</label
@@ -153,7 +156,7 @@
                     </div>
                     <!-- Submit button -->
                     <div class="d-grid gap-2">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-primary" type="submit">
                         Acessar
                       </button>
                     </div>

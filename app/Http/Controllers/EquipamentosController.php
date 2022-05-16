@@ -23,7 +23,7 @@ class EquipamentosController extends Controller
             'equi_nome'=> $request->nome,
             'equi_descricao' => $request->descricao,
         ]);
-        return "Equipamento criado com sucesso";
+        return redirect()->back()->with('success', 'Operação realizada com sucesso!');
     }
 
     public function show($id){
@@ -49,7 +49,7 @@ class EquipamentosController extends Controller
             'equi_nome'=> $request->nome,
             'equi_descricao' => $request->descricao,
         ]);
-        return "Equipamento atualizado com sucesso";
+        return redirect()->back()->with('success', 'Operação realizada com sucesso!');
     }
 
     public function delete($id){
@@ -59,6 +59,6 @@ class EquipamentosController extends Controller
     public function destroy($id){
         $equipamento= Equipamento::findOrFail($id); // precisa da Model
        $equipamento->delete();
-        return "Equipamento excluído com sucesso";
+       return redirect()->back()->with('success', 'Operação realizada com sucesso!');
     }
 }

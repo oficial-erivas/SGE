@@ -20,15 +20,16 @@ public function store(Request $request){
     Tecnico::create([ 
         'tec_login' => $request->login,
         'tec_senha'=> $request->senha,
-        'teccpf' => $request->cpf,
+        'tec_cpf' => $request->cpf,
         'tec_rg' => $request->rg,
         'tec_nome' => $request->nome,
         'tec_setor' => $request->setor,
         'tec_tel' => $request->telefone,
         'tec_email'=> $request->email,
         'tec_matricula' => $request->matricula,
+        'tec_atrib' => $request->atrib,
     ]);
-    return "Tecnico criado com sucesso";
+    return redirect()->back()->with('success', 'Operação realizada com sucesso!');
 }
 
 public function show($id){
@@ -43,7 +44,7 @@ public function edit($id){
 
 public function update(Request $request, $id){
   $tecnico= Tecnico::findOrFail($id);
-    $$tecnico->update([ 
+    $tecnico->update([ 
       'tec_login' => $request->login,
       'tec_senha'=> $request->senha,
       'teccpf' => $request->cpf,
@@ -53,8 +54,9 @@ public function update(Request $request, $id){
       'tec_tel' => $request->telefone,
       'tec_email'=> $request->email,
       'tec_matricula' => $request->matricula,
+      'tec_atrib' => $request->atrib,
     ]);
-    return "Tecnico atualizado com sucesso";
+    return redirect()->back()->with('success', 'Operação realizada com sucesso!');
 }
 
 public function delete($id){
@@ -64,7 +66,7 @@ public function delete($id){
 public function destroy($id){
     $tecnico= Tecnico::findOrFail($id); // precisa da Model
     $tecnico->delete();
-    return "tecnico excluído com sucesso";
+    return redirect()->back()->with('success', 'Operação realizada com sucesso!');
 }
 
 

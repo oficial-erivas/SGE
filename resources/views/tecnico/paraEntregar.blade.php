@@ -200,7 +200,7 @@
             @endforeach
             
             @foreach ($colaboradoresResp as $colaboradorResp)
-            @if($colaboradorResp->id == $colaboradorResp->colabResp_id)
+            @if($colaboradorResp->id == $emprestimo->colabResp_id)
             <td>{{$colaboradorResp->colabResp_nome}}</td>
             @break
             @endif
@@ -230,26 +230,14 @@
       crossorigin="anonymous"
     ></script> -->
     <!-- MDB -->
-    <div class="py-4"></div>
-    <div class="py-4"></div>
-    <footer class="text-center text-white" style="background-color: #caced1">
-      <!-- Grid container -->
-      <div>
-        <!-- Section: Images -->
-        <section>
-          <img
-            src="https://cdn.glitch.global/d04e99eb-7a74-4fa2-9b7d-caacc853d028/footer.png?v=1652401893913"
-            class="w-100"
-          />
-        </section>
-      </div>
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: #0000cd">
-        © 2022 Copyright:
-        <a class="text-white" href="">SGEH Inc.</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
+    @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
+@include('footer')
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"

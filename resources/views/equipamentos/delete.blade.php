@@ -93,56 +93,9 @@
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
               <h3>SGEH</h3>
             </a>
-            <!-- Left links -->
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Equipamentos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Usuario</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Relatórios</a>
-              </li>
-            </ul>
-            <!-- Left links -->
           </div>
           <!-- Collapsible wrapper -->
 
-          <!-- Right elements -->
-          <div class="d-flex align-items-center">
-            <!-- Avatar -->
-            <div class="dropdown">
-              <a
-                class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                href="#"
-                id="navbarDropdownMenuAvatar"
-                role="button"
-                data-mdb-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                  class="rounded-circle"
-                  height="25"
-                  alt="Black and White Portrait of a Man"
-                  loading="lazy"
-                />
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-end"
-                aria-labelledby="navbarDropdownMenuAvatar"
-              >
-                <li>
-                  <a class="dropdown-item" href="#">Meu perfil</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Sair</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Right elements -->
         </div>
         <!-- Container wrapper -->
       </nav>
@@ -165,11 +118,12 @@
             name="nome"
             class="form-control"
             value="{{$equipamento->equi_nome}}"
+            disabled
           />
           <br />
         </div>
         <div class="form-group py-4">
-          <button type="submit" class="btn btn-secondary">Voltar</button>
+        <a class="btn btn-secondary" href="javascript:history.back()">Voltar</a>
           <button type="submit" class="btn btn-primary">Confirmar</button>
         </div>
       </form>

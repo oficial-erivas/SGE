@@ -27,8 +27,11 @@ public function store(Request $request){
         'colab_tel' => $request->telefone,
         'colab_email'=> $request->email,
         'colab_matricula' => $request->matricula,
+        'colab_atrib' => $request->atrib,
     ]);
-    return "Colaborador criado com sucesso";
+    return redirect()
+    ->back()
+    ->with('mensagem', 'Colaborador cadastrado com sucesso!');
 }
 
 public function show($id){

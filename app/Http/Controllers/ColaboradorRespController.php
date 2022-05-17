@@ -97,6 +97,8 @@ public function destroy($id){
 
     public function getEquipamentos($id)// $id do colabResp
 {
+    $colaboradorResp= ColaboradorResp::findOrFail($id);
+    $colaborador=Colaborador::where('colab_cpf', $colaboradorResp->colabResp_cpf)->first();
     $equipamentos = Equipamento::where('status', 'disponivel')->get();
     $colaboradorResp= ColaboradorResp::findOrFail($id);
     // Repassando para a view
@@ -111,7 +113,7 @@ public function getEmprestimos($id)// $id do colabResp , todo colabResp tbm exis
         $emprestimos=collect();
     }
     else{
-    $emprestimos = Emprestimo::where('colab_id', $colaborador->id)->get();
+    $emprestimos = Emprestimo::where('colab_id', $colaborador->id)->where('emp_status', '!=','encerrado')->get();
     }
     $equipamentos=collect();
     $colaboradoresResp=collect();
@@ -128,7 +130,7 @@ return view('colaboradorResp.emprestimos', ['colaborador' => $colaboradorResp],c
 }
 
 public function getLiberacoes($id)// $id do colabResp
-{
+{  
     $colaboradorResp= ColaboradorResp::findOrFail($id);
     $matchThese = ['colabResp_id' => $id, 'emp_status' => 'solicitadoEmprestimo'];
     $emprestimos = Emprestimo::where($matchThese)->get();

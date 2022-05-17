@@ -152,7 +152,13 @@
       </nav>
       <!-- Navbar -->
     </div>
-
+    @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
   @include('emprestimos.list')
   @include('footer')
   <script

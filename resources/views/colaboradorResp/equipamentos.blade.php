@@ -153,7 +153,13 @@
       <!-- Navbar -->
     </div>
     <div class="py-4"></div>
-
+    @if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
   @include('equipamentos.list')
   @include('footer')
   <script

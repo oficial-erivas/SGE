@@ -65,7 +65,8 @@ class EmprestimosController extends Controller
         $emprestimo->update([ 
             'emp_status' => 'solicitadaDevolucao',
         ]);
-        return redirect()->back()->with('success', 'Devolução do empréstimo solicitada, técnico irá recolher o equipamento');
+        return "Devolução do empréstimo solicitada, técnico irá recolher o equipamento";
+        //return redirect()->back()->with('success', 'Devolução do empréstimo solicitada, técnico irá recolher o equipamento');
     }
 
     public function liberar($id){ //id do emprestimo
@@ -103,10 +104,10 @@ class EmprestimosController extends Controller
             return view('tecnico.avaliar', ['equipamento' => $equipamento, 'emprestimo'=>$emprestimo]);
     }
     public function avaliar(Request $request, $id){
-        $equipamento = Equipamento::findOrFail($id);
-        $equipamento->update([ 
+        $emprestimo = Emprestimo::findOrFail($id);
+        $emprestimo->update([ 
             'avaliacao'=>$request->avaliacao,
         ]);
-        return "Equipamento devolvido e avaliado com sucesso";
+        return redirect()->back()->with('success', 'Operação realizada com sucesso!');
     }
 }
